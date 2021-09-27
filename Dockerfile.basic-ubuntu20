@@ -1,0 +1,25 @@
+
+# Ubuntu 20 LTS(Focal Fossa) http://releases.ubuntu.com/focal/
+FROM ubuntu:focal
+
+# Use tencent cloud mirror.
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bk
+COPY sources.list /etc/apt/sources.list
+
+# https://serverfault.com/questions/949991/how-to-install-tzdata-on-a-ubuntu-docker-image
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update
+
+# Install depends for OpenWRT.
+RUN apt-get install -y build-essential ccache ecj fastjar file g++ gawk \
+    gettext git java-propose-classpath libelf-dev libncurses5-dev \
+    libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget \
+    python3-distutils python3-setuptools python3-dev rsync subversion \
+    swig time xsltproc zlib1g-dev
+
+# For docker to use root to build OpenWRT.
+ENV FORCE_UNSAFE_CONFIGURE 1
+
+# Setup the workdir.
+WORKDIR /root/openwrt
