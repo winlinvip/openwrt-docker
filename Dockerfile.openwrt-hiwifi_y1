@@ -56,10 +56,10 @@ RUN cd /root/openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 ENV FORCE_UNSAFE_CONFIGURE 1
 
 # Use the kernel config file.
-COPY openwrt-ramips-mt7620-hiwifi_hc5661-usb_rndis-squashfs.config /root/openwrt/.config
+COPY openwrt-hiwifi_y1.config /root/openwrt/.config
 
 # Build the kernel.
-RUN cd /root/openwrt && make -j4
+RUN cd /root/openwrt && make
 
 # Setup the workdir.
 WORKDIR /root/openwrt

@@ -23,19 +23,18 @@ make menuconfig
 make
 ```
 
-## HiWifi HC5661 with USB RNDIS
+## HiWifi HC5661
 
 Build OpenWRT for HiWifi HC5661, [Lenovo Y1](https://openwrt.org/toh/lenovo/y1?s[]=lenovo&s[]=y1).
 
 ```bash
-docker build -t ubuntu:openwrt-hiwifi_hc5661-usb_rndis -f Dockerfile.hiwifi_hc5661-usb_rndis .
+docker build -t ubuntu:openwrt-hiwifi_y1 -f Dockerfile.openwrt-hiwifi_y1 .
 ```
 
-Copy the bin from image:
+Run docker to build package for HiWifi:
 
 ```bash
-docker run --rm -v `pwd`:/output ubuntu:openwrt-hiwifi_hc5661-usb_rndis \
-    cp -R bin /output/bin
+docker run --rm -it -v `pwd`:/output ubuntu:openwrt-hiwifi_y1 bash
 ```
 
 ## Basic Ubuntu 20 LTS(Focal Fossa)
@@ -43,13 +42,7 @@ docker run --rm -v `pwd`:/output ubuntu:openwrt-hiwifi_hc5661-usb_rndis \
 Prepare the Ubuntu 20 LTS(Focal Fossa), without OpenWRT.
 
 ```bash
-docker build -t ubuntu:openwrt-basic-ubuntu20 -f Dockerfile.basic-ubuntu20 .
-```
-
-Run Ubuntu 20 for OpenWRT:
-
-```bash
-docker run --rm -it ubuntu:openwrt-basic-ubuntu20 bash
+docker build -t ubuntu:openwrt-basic-ubuntu20 -f Dockerfile.openwrt-basic-ubuntu20 .
 ```
 
 2021.09
