@@ -45,5 +45,37 @@ Prepare the Ubuntu 20 LTS(Focal Fossa), without OpenWRT.
 docker build -t ubuntu:openwrt-basic-ubuntu20 -f Dockerfile.openwrt-basic-ubuntu20 .
 ```
 
+## Build package srs-router
+
+Run docker, which mount current directory to volume `/output`:
+
+```bash
+docker run --rm -it -v `pwd`:/output ubuntu:openwrt-hiwifi_y1 bash
+```
+
+Create feed for `ossrs`, update and install package `srs-router`:
+
+```bash
+cp /output/openwrt-srs-router-feeds.conf feeds.conf.default
+./scripts/feeds update ossrs
+./scripts/feeds install srs-router
+```
+
+Copy the config, or run `make menuconfig`, enable the `Multilemedia -> srs-router`, then build package `srs-router`:
+
+```bash
+cp /output/openwrt-hiwifi_y1-srs-router.config .config
+make package/srs-router/compile V=s
+```
+
+Install `bin/packages/*/ossrs/srs-router_*.ipk` to OpenWRT.
+
+Finally, run it:
+
+```bash
+root@OpenWrt:~# srs-router 
+Hello OpenWRT+SRS
+```
+
 2021.09
 
