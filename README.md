@@ -65,8 +65,12 @@ Copy the config, or run `make menuconfig`, enable the `Multilemedia -> srs-route
 
 ```bash
 cp /output/openwrt-hiwifi_y1-srs-router.config .config
-make package/srs-router/compile V=s
+make package/srs-router/compile
 ```
+
+> Note: Use `CONFIG_DEBUG=y` to compile a debugging version.
+
+> Note: Use `V=s` to show detail compile process.
 
 Install `bin/packages/*/ossrs/srs-router_*.ipk` to OpenWRT.
 
