@@ -6,7 +6,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/ossrs/srs/releases/download/v$(PKG_VERSION)
-PKG_HASH:=1a2f369bf2d0298c9b03cb7477177db8
+PKG_HASH:=3aa90f2a9939e49be29e020a03f69bf6
 
 PKG_MAINTAINER:=Winlin <winlin@vip.126.com>
 PKG_LICENSE:=MIT
