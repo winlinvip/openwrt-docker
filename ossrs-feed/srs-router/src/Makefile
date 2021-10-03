@@ -1,6 +1,6 @@
 .PHONY: all router porting verify helloworld st clean
 
-all: porting st verify helloworld #router
+all: porting st verify helloworld router
 
 router: ./srs-router st porting
 

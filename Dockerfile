@@ -52,6 +52,9 @@ RUN cd /root/openwrt/feeds/packages && mkdir -p packages.tmp && echo "https://gi
 # Update feeds.
 RUN cd /root/openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 
+# Install dev packages.
+RUN apt-get install -y pkg-config vim
+
 # For docker to use root to build OpenWRT.
 ENV FORCE_UNSAFE_CONFIGURE 1
 

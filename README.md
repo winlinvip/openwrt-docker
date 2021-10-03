@@ -56,7 +56,7 @@ docker run --rm -it -v `pwd`:/output ubuntu:openwrt-hiwifi_y1 bash
 Create feed for `ossrs`, update and install package `srs-router`:
 
 ```bash
-cp /output/openwrt-srs-router-feeds.conf feeds.conf.default
+cp /output/openwrt-ossrs-feed.conf feeds.conf.default
 ./scripts/feeds update ossrs
 ./scripts/feeds install srs-router
 ```
@@ -79,6 +79,25 @@ Finally, run it:
 ```bash
 root@OpenWrt:~# srs-router 
 Hello OpenWRT+SRS
+```
+
+## Build package srs-server
+
+Run docker and config feed:
+
+```bash
+docker run --rm -it -v `pwd`:/output ubuntu:openwrt-hiwifi_y1 bash
+cp /output/openwrt-ossrs-feed.conf feeds.conf.default
+./scripts/feeds update ossrs
+./scripts/feeds install srs-server
+cp /output/openwrt-hiwifi_y1-srs-server.config .config
+make package/srs-server/compile
+```
+
+## Build package with multiple jobs
+
+```bash
+make package/srs-server/compile PKG_JOBS=-j8
 ```
 
 2021.09

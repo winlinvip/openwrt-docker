@@ -4,7 +4,7 @@ PKG_NAME:=srs-router
 PKG_VERSION:=1.0.0
 PKG_RELEASE:=1
 
-PKG_MAINTAINER:=Winlin<winlin@vip.126.com>
+PKG_MAINTAINER:=Winlin <winlin@vip.126.com>
 PKG_LICENSE:=MIT
 
 include $(INCLUDE_DIR)/package.mk

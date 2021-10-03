@@ -18,6 +18,9 @@ RUN apt-get install -y build-essential ccache ecj fastjar file g++ gawk \
     python3-distutils python3-setuptools python3-dev rsync subversion \
     swig time xsltproc zlib1g-dev
 
+# Install dev packages.
+RUN apt-get install -y pkg-config vim
+
 # For docker to use root to build OpenWRT.
 ENV FORCE_UNSAFE_CONFIGURE 1
 
